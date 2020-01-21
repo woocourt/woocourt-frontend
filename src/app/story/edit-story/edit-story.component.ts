@@ -18,8 +18,6 @@ export class EditStoryComponent implements OnInit {
 
   addForm: FormGroup;
 
-  characters: Character[];
-
   ngOnInit() {
     let storyId = window.localStorage.getItem("editStoryId");
     this.apiService.getGenres()

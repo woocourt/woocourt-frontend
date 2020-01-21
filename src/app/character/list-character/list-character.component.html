@@ -6,12 +6,14 @@
           <tr>
             <th class="hidden">Id</th>
             <th>Name</th>
+            <th>Story</th>
           </tr>
           </thead>
           <tbody>
           <tr *ngFor="let character of characters">
             <td class="hidden">{{character.id}}</td>
             <td>{{character.name}}</td>
+            <td>{{character.story.title}}</td>
             <td><button class="btn btn-success" (click)="deleteCharacter(character)"> Delete</button>
               <button class="btn btn-success" (click)="editCharacter(character)" style="margin-left: 20px;"> Edit</button></td>
           </tr>

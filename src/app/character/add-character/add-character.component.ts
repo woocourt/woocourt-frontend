@@ -40,7 +40,7 @@ export class AddCharacterComponent implements OnInit {
     console.log('form value', payload);
     this.apiService.addCharacter(this.addForm.value.story, payload)
       .subscribe( _ => {
-        this.router.navigate(['list-story']);
+        this.router.navigate(['list-character']);
       });
   }
 

@@ -68,6 +68,10 @@ export class ApiService {
     return this.http.get<any>(`${this.baseUrl}/Characters`);
   }
 
+  getCharacterById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/Characters/${id}`);
+  }
+
   deleteCharacter(id: string): Observable<ApiResponse> {
     return this.http.delete<ApiResponse>(`${this.baseUrl}/Characters/${id}`);
   }
