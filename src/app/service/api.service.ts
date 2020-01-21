@@ -9,7 +9,7 @@ import {ApiResponse} from "../model/api.response";
 export class ApiService {
 
   constructor(private http: HttpClient) { }
-  baseUrl: string = 'http://localhost/UNRD.Stories.API/api';
+  baseUrl: string = 'https://localhost:44305/api';
 
   login(loginPayload) : Observable<ApiResponse> {
     return this.http.post<ApiResponse>('http://localhost:8080/' + 'token/generate-token', loginPayload);
@@ -39,6 +39,10 @@ export class ApiService {
     return this.http.get<any>(`${this.baseUrl}/Stories`);
   }
 
+  getStoryCharacters(id: string) : Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/Characters/Stories/${id}`);
+  }
+
   deleteStory(id: string): Observable<ApiResponse> {
     return this.http.delete<ApiResponse>(`${this.baseUrl}/Stories/${id}`);
   }
@@ -47,12 +51,16 @@ export class ApiService {
     return this.http.post<ApiResponse>(`${this.baseUrl}/Stories`, {Genre: story['genre'], Title: story['title']});
   }
 
-  getStoryById(id: string): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(`${this.baseUrl}/Stories/${id}`);
+  getStoryById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/Stories/${id}`);
   }
 
   updateStory(story: Story): Observable<ApiResponse> {
     return this.http.put<ApiResponse>(`${this.baseUrl}/Stories`, story);
+  }
+
+  getGenres() : Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/Genres`);
   }
 
 }

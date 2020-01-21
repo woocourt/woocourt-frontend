@@ -1,9 +1,8 @@
-import { Component, OnInit , Inject} from '@angular/core';
-import {Router} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {first} from "rxjs/operators";
-import {Story} from "../../model/story.model";
+import {Router} from "@angular/router";
 import {ApiService} from "../../service/api.service";
+import {Genre} from "../../model/genre.model";
 
 @Component({
   selector: 'app-edit-story',
@@ -12,43 +11,49 @@ import {ApiService} from "../../service/api.service";
 })
 export class EditStoryComponent implements OnInit {
 
-  story: Story;
-  editForm: FormGroup;
+  genres: Genre[]
+
   constructor(private formBuilder: FormBuilder,private router: Router, private apiService: ApiService) { }
 
+  addForm: FormGroup;
+
   ngOnInit() {
-    const storyId = window.localStorage.getItem("editStoryId");
-    if(!storyId) {
-      alert("Invalid action.")
-      this.router.navigate(['list-story']);
-      return;
-    }
-    this.editForm = this.formBuilder.group({
-      id: [''],
-      title: ['', Validators.required],
-      genre: ['', Validators.required],
+    let storyId = window.localStorage.getItem("editStoryId");
+    this.apiService.getGenres()
+    .subscribe( data => {
+      this.genres = data;
+      console.log('genres', this.genres);
     });
+
+
     this.apiService.getStoryById(storyId)
-      .subscribe( data => {
-        this.editForm.setValue(data.result);
-      });
+    .subscribe(data => {
+      this.addForm.patchValue({
+        id: data.id,
+        title: data.title});
+    });
+
+    this.addForm = this.formBuilder.group({
+      id: [],
+      title: ['', Validators.required],
+      genre: [''],      
+    });
+
   }
 
   onSubmit() {
-    this.apiService.updateStory(this.editForm.value)
-      .pipe(first())
-      .subscribe(
-        data => {
-          if(data.status === 200) {
-            alert('User updated successfully.');
-            this.router.navigate(['list-story']);
-          }else {
-            alert(data.message);
-          }
-        },
-        error => {
-          alert(error);
-        });
+    const payload = {
+      id: this.addForm.value.id,
+      title: this.addForm.value.title,
+      genre: {
+        id: this.addForm.value.genre
+      }
+    }
+    console.log('form value', payload);
+    this.apiService.updateStory(payload)
+      .subscribe( _ => {
+        this.router.navigate(['list-story']);
+      });
   }
 
 }

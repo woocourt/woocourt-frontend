@@ -15,6 +15,7 @@ const routes: Routes = [
   { path : '', component : ListStoryComponent },
   { path: 'add-story', component: AddStoryComponent },
   { path: 'edit-story', component: EditStoryComponent },
+  { path : 'list-story', component : ListStoryComponent },
 ];
 
 export const routing = RouterModule.forRoot(routes);

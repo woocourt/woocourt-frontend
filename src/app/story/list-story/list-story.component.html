@@ -13,7 +13,7 @@
       <tr *ngFor="let story of stories">
         <td class="hidden">{{story.id}}</td>
         <td>{{story.title}}</td>
-        <td>{{story.genre}}</td>
+        <td>{{story.genre.name}}</td>
         <td><button class="btn btn-success" (click)="deleteStory(story)"> Delete</button>
           <button class="btn btn-success" (click)="editStory(story)" style="margin-left: 20px;"> Edit</button></td>
       </tr>

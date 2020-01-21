@@ -12,19 +12,25 @@ export class ListStoryComponent implements OnInit {
 
   stories: Story[];
 
-  constructor(private router: Router, private apiService: ApiService) { }
+  constructor(private router: Router, private apiService: ApiService) {
+    this.stories = [];
+   }
 
   ngOnInit() {
-    // if(!window.localStorage.getItem('token')) {
-    //   this.router.navigate(['login']);
-    //   return;
-    // }
     this.apiService.getStories()
       .subscribe( data => {
         this.stories = data;
         console.log('stories', this.stories);
+        for (let i = 0; i < this.stories.length ; i++) {
+          this.apiService.getStoryCharacters(this.stories[i].id)
+            .subscribe( data => {
+              this.stories[i].characters = data;
+              console.log('characters', data);
+            });
+        }      
       });
-  }
+
+      }
 
   deleteStory(story: Story): void {
     this.apiService.deleteStory(story.id)
