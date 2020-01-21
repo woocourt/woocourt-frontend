@@ -41,4 +41,8 @@ export class ListCharacterComponent implements OnInit {
   addCharacter(): void {
     this.router.navigate(['add-character']);
   };
+
+  goToStories(): void {
+    this.router.navigate(['list-story']);
+  }
 }

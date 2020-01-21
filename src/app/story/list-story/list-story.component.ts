@@ -32,6 +32,12 @@ export class ListStoryComponent implements OnInit {
 
       }
 
+  getCharacters(story: Story): string {
+    return story.characters.reduce((acc, current) => {
+      return acc + ' ' + current.name;
+    }, '');
+  }
+
   deleteStory(story: Story): void {
     this.apiService.deleteStory(story.id)
       .subscribe( _ => {
@@ -48,4 +54,8 @@ export class ListStoryComponent implements OnInit {
   addStory(): void {
     this.router.navigate(['add-story']);
   };
+
+  goToCharacters(): void {
+    this.router.navigate(['list-character']);
+  }
 }

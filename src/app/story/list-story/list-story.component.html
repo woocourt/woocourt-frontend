@@ -1,5 +1,7 @@
 <div class="col-md-6 story-container">
-    <h2 style="margin: auto"> Story Details</h2>
+    <button class="btn btn-info" style="width:100px" (click)="goToCharacters()"> Characters</button>
+
+  <h2 style="margin: auto"> Story Details</h2>
     <button class="btn btn-danger" style="width:100px" (click)="addStory()"> Add Story</button>
     <table class="table table-striped">
       <thead>
@@ -7,6 +9,7 @@
         <th class="hidden">Id</th>
         <th>Title</th>
         <th>Genre</th>
+        <th>Characters</th>
       </tr>
       </thead>
       <tbody>
@@ -14,6 +17,7 @@
         <td class="hidden">{{story.id}}</td>
         <td>{{story.title}}</td>
         <td>{{story.genre.name}}</td>
+        <td>{{getCharacters(story)}}</td>
         <td><button class="btn btn-success" (click)="deleteStory(story)"> Delete</button>
           <button class="btn btn-success" (click)="editStory(story)" style="margin-left: 20px;"> Edit</button></td>
       </tr>
