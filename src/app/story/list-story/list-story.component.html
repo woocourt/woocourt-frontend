@@ -1,0 +1,23 @@
+<div class="col-md-6 story-container">
+    <h2 style="margin: auto"> Story Details</h2>
+    <button class="btn btn-danger" style="width:100px" (click)="addStory()"> Add Story</button>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th class="hidden">Id</th>
+        <th>Title</th>
+        <th>Genre</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let story of stories">
+        <td class="hidden">{{story.id}}</td>
+        <td>{{story.title}}</td>
+        <td>{{story.genre}}</td>
+        <td><button class="btn btn-success" (click)="deleteStory(story)"> Delete</button>
+          <button class="btn btn-success" (click)="editStory(story)" style="margin-left: 20px;"> Edit</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  

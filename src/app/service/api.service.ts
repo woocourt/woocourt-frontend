@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {User} from "../model/user.model";
+import {Story} from "../model/story.model";
 import {Observable} from "rxjs/index";
 import {ApiResponse} from "../model/api.response";
 
@@ -8,7 +9,7 @@ import {ApiResponse} from "../model/api.response";
 export class ApiService {
 
   constructor(private http: HttpClient) { }
-  baseUrl: string = 'http://localhost:8080/users/';
+  baseUrl: string = 'http://localhost/UNRD.Stories.API/api';
 
   login(loginPayload) : Observable<ApiResponse> {
     return this.http.post<ApiResponse>('http://localhost:8080/' + 'token/generate-token', loginPayload);
@@ -33,4 +34,25 @@ export class ApiService {
   deleteUser(id: number): Observable<ApiResponse> {
     return this.http.delete<ApiResponse>(this.baseUrl + id);
   }
+
+  getStories() : Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/Stories`);
+  }
+
+  deleteStory(id: string): Observable<ApiResponse> {
+    return this.http.delete<ApiResponse>(`${this.baseUrl}/Stories/${id}`);
+  }
+
+  createStory(story: Story): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(`${this.baseUrl}/Stories`, {Genre: story['genre'], Title: story['title']});
+  }
+
+  getStoryById(id: string): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(`${this.baseUrl}/Stories/${id}`);
+  }
+
+  updateStory(story: Story): Observable<ApiResponse> {
+    return this.http.put<ApiResponse>(`${this.baseUrl}/Stories`, story);
+  }
+
 }

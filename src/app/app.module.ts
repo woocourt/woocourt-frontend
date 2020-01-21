@@ -11,6 +11,9 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {ApiService} from "./service/api.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {TokenInterceptor} from "./core/interceptor";
+import { ListStoryComponent } from './story/list-story/list-story.component';
+import { AddStoryComponent } from './story/add-story/add-story.component';
+import { EditStoryComponent } from './story/edit-story/edit-story.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import {TokenInterceptor} from "./core/interceptor";
     ListUserComponent,
     LoginComponent,
     AddUserComponent,
-    EditUserComponent
+    EditUserComponent,
+    ListStoryComponent,
+    AddStoryComponent,
+    EditStoryComponent
   ],
   imports: [
     BrowserModule,
