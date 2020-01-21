@@ -1,0 +1,21 @@
+<div class="col-md-6 character-container">
+        <h2 style="margin: auto">Characters</h2>
+        <button class="btn btn-danger" style="width:100px" (click)="addCharacter()"> Add</button>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th class="hidden">Id</th>
+            <th>Name</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let character of characters">
+            <td class="hidden">{{character.id}}</td>
+            <td>{{character.name}}</td>
+            <td><button class="btn btn-success" (click)="deleteCharacter(character)"> Delete</button>
+              <button class="btn btn-success" (click)="editCharacter(character)" style="margin-left: 20px;"> Edit</button></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      

@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ApiService} from "../../service/api.service";
 import {Genre} from "../../model/genre.model";
+import {Character} from "../../model/character.model";
 
 @Component({
   selector: 'app-edit-story',
@@ -16,6 +17,8 @@ export class EditStoryComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,private router: Router, private apiService: ApiService) { }
 
   addForm: FormGroup;
+
+  characters: Character[];
 
   ngOnInit() {
     let storyId = window.localStorage.getItem("editStoryId");

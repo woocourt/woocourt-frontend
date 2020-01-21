@@ -14,6 +14,9 @@ import {TokenInterceptor} from "./core/interceptor";
 import { ListStoryComponent } from './story/list-story/list-story.component';
 import { AddStoryComponent } from './story/add-story/add-story.component';
 import { EditStoryComponent } from './story/edit-story/edit-story.component';
+import { EditCharacterComponent } from './character/edit-character/edit-character.component';
+import { AddCharacterComponent } from './character/add-character/add-character.component';
+import { ListCharacterComponent } from './character/list-character/list-character.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { EditStoryComponent } from './story/edit-story/edit-story.component';
     EditUserComponent,
     ListStoryComponent,
     AddStoryComponent,
-    EditStoryComponent
+    EditStoryComponent,
+    EditCharacterComponent,
+    AddCharacterComponent,
+    ListCharacterComponent
   ],
   imports: [
     BrowserModule,

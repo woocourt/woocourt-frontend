@@ -1,0 +1,17 @@
+<div class="col-md-6 user-container">
+        <h2 class="text-center">Add Character</h2>
+        <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" formControlName="name" placeholder="name" name="title" class="form-control" id="name">
+          </div>
+          <div class="form-group">
+            <label for="title">Story:</label>
+            <div><select  formControlName="story">
+              <option *ngFor="let story of stories" [value]="story.id">{{story.title}}</option>
+            </select>
+          </div>
+          </div>
+          <button class="btn btn-success">Add</button>
+        </form>
+      </div>

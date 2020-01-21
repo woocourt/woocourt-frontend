@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {User} from "../model/user.model";
 import {Story} from "../model/story.model";
+import {Character} from "../model/character.model";
 import {Observable} from "rxjs/index";
 import {ApiResponse} from "../model/api.response";
 
@@ -61,6 +62,18 @@ export class ApiService {
 
   getGenres() : Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/Genres`);
+  }
+
+  getCharacters() : Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/Characters`);
+  }
+
+  deleteCharacter(id: string): Observable<ApiResponse> {
+    return this.http.delete<ApiResponse>(`${this.baseUrl}/Characters/${id}`);
+  }
+
+  addCharacter(storyId: string, character: Character): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(`${this.baseUrl}/Stories/${storyId}/Characters`, character);
   }
 
 }

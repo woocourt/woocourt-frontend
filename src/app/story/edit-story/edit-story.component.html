@@ -7,15 +7,13 @@
       </div>
       <div class="form-group">
         <label for="title">Story Genre:</label>
-        <div><select  formControlName="genre">
+        <div>
+          <select  formControlName="genre">
+          <option value="" disabled>Select a Genre</option>  
           <option *ngFor="let genre of genres" [value]="genre.id">{{genre.name}}</option>
         </select>
       </div>
       </div>
-      <!-- <div class="form-group">
-        <label for="genre">Story Genre:</label>
-        <input type="text" formControlName="genre" placeholder="genre" name="genre" class="form-control" id="genre">
-      </div> -->
       <button class="btn btn-success">Update</button>
     </form>
   </div>

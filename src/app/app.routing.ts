@@ -6,6 +6,9 @@ import {ListUserComponent} from "./user/list-user/list-user.component";
 import {EditUserComponent} from "./user/edit-user/edit-user.component";
 import {ListStoryComponent} from "./story/list-story/list-story.component";
 import {EditStoryComponent} from "./story/edit-story/edit-story.component";
+import {ListCharacterComponent} from "./character/list-character/list-character.component";
+import {EditCharacterComponent} from "./character/edit-character/edit-character.component";
+import {AddCharacterComponent} from "./character/add-character/add-character.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -16,6 +19,9 @@ const routes: Routes = [
   { path: 'add-story', component: AddStoryComponent },
   { path: 'edit-story', component: EditStoryComponent },
   { path : 'list-story', component : ListStoryComponent },
+  { path: 'edit-character', component: EditCharacterComponent },
+  { path : 'list-character', component : ListCharacterComponent },
+  { path : 'add-character', component : AddCharacterComponent },
 ];
 
 export const routing = RouterModule.forRoot(routes);
