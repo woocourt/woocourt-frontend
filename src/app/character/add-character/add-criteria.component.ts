@@ -4,9 +4,9 @@ import {Router} from '@angular/router'
 import {ApiService} from '../../service/api.service'
 
 @Component({
-  selector: 'app-add-character',
-  templateUrl: './add-character.component.html',
-  styleUrls: ['./add-character.component.css'],
+  selector: 'app-add-criteria',
+  templateUrl: './add-criteria.component.html',
+  styleUrls: ['./add-criteria.component.css'],
 })
 export class AddCriteriaComponent implements OnInit {
 
