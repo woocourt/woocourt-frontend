@@ -33,7 +33,7 @@ export class ListCriteriaComponent implements OnInit {
   }
 
   addCriteriaType(): void {
-    this.router.navigate(['add-criteria'])
+    this.router.navigate(['add-character'])
   }
 
   // editCharacter(character: Character): void {
