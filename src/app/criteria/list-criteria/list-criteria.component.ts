@@ -32,15 +32,17 @@ export class ListCriteriaComponent implements OnInit {
       })
   }
 
+  addCriteriaType(): void {
+    this.router.navigate(['add-criteria'])
+  }
+
   // editCharacter(character: Character): void {
   //   window.localStorage.removeItem('editCharacterId')
   //   window.localStorage.setItem('editCharacterId', character.id.toString())
   //   this.router.navigate(['edit-character'])
   // }
 
-  // addCharacter(): void {
-  //   this.router.navigate(['add-character'])
-  // }
+
 
   // goToStories(): void {
   //   this.router.navigate(['list-story'])

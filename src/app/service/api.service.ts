@@ -22,6 +22,10 @@ export class ApiService {
     return this.http.delete<ApiResponse>(`${this.baseUrl}/criteria/${id}`)
   }
 
+  addCriteriaType(criteriaType: CriteriaType): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(`${this.baseUrl}/criteria`, criteriaType)
+  }
+
   ///////////////////////// old example methods
 
   login(loginPayload): Observable<ApiResponse> {
