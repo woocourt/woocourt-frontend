@@ -1,0 +1,23 @@
+<div class="col-md-6 character-container">
+    <button class="btn btn-info" style="width:100px" (click)="goToStories()"> Stories</button>
+        <h2 style="margin: auto">Criteria</h2>
+        <button class="btn btn-danger" style="width:100px" (click)="addCriteriaType()"> Add</button>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th class="hidden">Id</th>
+            <th>Name</th>
+            <th>Required</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let criteriaType of criteria">
+            <td class="hidden">{{criteriaType.id}}</td>
+            <td>{{criteriaType.name}}</td>
+            <td>{{criteriaType.required}}</td>
+            <td><button class="btn btn-success" (click)="deleteCriteriaType(criteriaType)"> Delete</button>
+              <button class="btn btn-success" (click)="editCriteriaType(criteriaType)" style="margin-left: 20px;"> Edit</button></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
