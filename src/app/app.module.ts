@@ -15,7 +15,7 @@ import { ListStoryComponent } from './story/list-story/list-story.component'
 import { AddStoryComponent } from './story/add-story/add-story.component'
 import { EditStoryComponent } from './story/edit-story/edit-story.component'
 import { EditCharacterComponent } from './character/edit-character/edit-character.component'
-import { AddCharacterComponent } from './character/add-character/add-character.component'
+import { AddCriteriaComponent } from './character/add-character/add-character.component'
 import { ListCharacterComponent } from './character/list-character/list-character.component'
 
 import {ListCriteriaComponent} from './criteria/list-criteria/list-criteria.component'
@@ -31,7 +31,7 @@ import {ListCriteriaComponent} from './criteria/list-criteria/list-criteria.comp
     AddStoryComponent,
     EditStoryComponent,
     EditCharacterComponent,
-    AddCharacterComponent,
+    AddCriteriaComponent,
     ListCharacterComponent,
     ListCriteriaComponent,
   ],

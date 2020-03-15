@@ -8,14 +8,14 @@ import {ListStoryComponent} from './story/list-story/list-story.component'
 import {EditStoryComponent} from './story/edit-story/edit-story.component'
 import {ListCharacterComponent} from './character/list-character/list-character.component'
 import {EditCharacterComponent} from './character/edit-character/edit-character.component'
-import {AddCharacterComponent} from './character/add-character/add-character.component'
+import {AddCriteriaComponent} from './character/add-character/add-character.component'
 
 import {ListCriteriaComponent} from './criteria/list-criteria/list-criteria.component'
 
 const routes: Routes = [
   { path: 'list-criteria', component: ListCriteriaComponent },
   { path: '', component : ListCriteriaComponent },
-  { path: 'add-criteria', component: AddCharacterComponent},
+  { path: 'add-criteria', component: AddCriteriaComponent},
 
   // old routes examples
   { path: 'login', component: LoginComponent },
