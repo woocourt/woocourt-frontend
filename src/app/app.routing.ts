@@ -11,12 +11,11 @@ import {EditCharacterComponent} from './character/edit-character/edit-character.
 import {AddCharacterComponent} from './character/add-character/add-character.component'
 
 import {ListCriteriaComponent} from './criteria/list-criteria/list-criteria.component'
-import {AddCriteriaComponent} from './criteria/add-criteria/add-criteria.component'
 
 const routes: Routes = [
   { path: 'list-criteria', component: ListCriteriaComponent },
   { path: '', component : ListCriteriaComponent },
-  { path: 'add-criteria', component: AddCriteriaComponent},
+  { path: 'add-criteria', component: AddCharacterComponent},
 
   // old routes examples
   { path: 'login', component: LoginComponent },
@@ -28,7 +27,7 @@ const routes: Routes = [
   { path : 'list-story', component : ListStoryComponent },
   { path: 'edit-character', component: EditCharacterComponent },
   { path : 'list-character', component : ListCharacterComponent },
-  { path : 'add-character', component : AddCharacterComponent },
+  // { path : 'add-character', component : AddCharacterComponent },
 ]
 
 export const routing = RouterModule.forRoot(routes)
