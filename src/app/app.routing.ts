@@ -8,7 +8,7 @@ import {ListStoryComponent} from './story/list-story/list-story.component'
 import {EditStoryComponent} from './story/edit-story/edit-story.component'
 import {ListCharacterComponent} from './character/list-character/list-character.component'
 import {EditCharacterComponent} from './character/edit-character/edit-character.component'
-import {AddCriteriaComponent} from './character/add-criteria/add-criteria.component'
+import {AddCriteriaComponent} from './criteria/add-criteria/add-criteria.component'
 
 import {ListCriteriaComponent} from './criteria/list-criteria/list-criteria.component'
 
