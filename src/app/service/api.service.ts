@@ -18,6 +18,10 @@ export class ApiService {
     return this.http.get<any>(`${this.baseUrl}/criteria`)
   }
 
+  getCriteriaType(id: string): Observable<CriteriaType> {
+    return this.http.get<any>(`${this.baseUrl}/criteria/${id}`)
+  }
+
   deleteCriteriaType(id: string): Observable<ApiResponse> {
     return this.http.delete<ApiResponse>(`${this.baseUrl}/criteria/${id}`)
   }

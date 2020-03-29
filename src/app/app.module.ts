@@ -19,6 +19,7 @@ import { AddCriteriaComponent } from './criteria/add-criteria/add-criteria.compo
 import { ListCharacterComponent } from './character/list-character/list-character.component'
 
 import {ListCriteriaComponent} from './criteria/list-criteria/list-criteria.component'
+import { EditCriteriaComponent } from './criteria/edit-criteria/edit-criteria.component'
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {ListCriteriaComponent} from './criteria/list-criteria/list-criteria.comp
     AddCriteriaComponent,
     ListCharacterComponent,
     ListCriteriaComponent,
+    EditCriteriaComponent,
   ],
   imports: [
     BrowserModule,

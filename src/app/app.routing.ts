@@ -11,11 +11,13 @@ import {EditCharacterComponent} from './character/edit-character/edit-character.
 import {AddCriteriaComponent} from './criteria/add-criteria/add-criteria.component'
 
 import {ListCriteriaComponent} from './criteria/list-criteria/list-criteria.component'
+import { EditCriteriaComponent } from './criteria/edit-criteria/edit-criteria.component'
 
 const routes: Routes = [
   { path: 'list-criteria', component: ListCriteriaComponent },
   { path: '', component : ListCriteriaComponent },
   { path: 'add-criteria', component: AddCriteriaComponent},
+  { path: 'edit-criteria', component: EditCriteriaComponent},
 
   // old routes examples
   { path: 'login', component: LoginComponent },

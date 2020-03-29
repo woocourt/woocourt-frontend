@@ -36,11 +36,11 @@ export class ListCriteriaComponent implements OnInit {
     this.router.navigate(['add-criteria'])
   }
 
-  // editCharacter(character: Character): void {
-  //   window.localStorage.removeItem('editCharacterId')
-  //   window.localStorage.setItem('editCharacterId', character.id.toString())
-  //   this.router.navigate(['edit-character'])
-  // }
+  editCriteriaType(criteriaType: CriteriaType): void {
+    window.localStorage.removeItem('criteriaTypeId')
+    window.localStorage.setItem('criteriaTypeId', criteriaType.id.toString())
+    this.router.navigate(['edit-criteria'])
+  }
 
 
 
