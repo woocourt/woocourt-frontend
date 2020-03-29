@@ -30,6 +30,10 @@ export class ApiService {
     return this.http.post<ApiResponse>(`${this.baseUrl}/criteria`, criteriaType)
   }
 
+  updateCriteriaType(criteriaType: CriteriaType): Observable<ApiResponse> {
+    return this.http.put<ApiResponse>(`${this.baseUrl}/criteria/${criteriaType.id}`, criteriaType)
+  }
+
   ///////////////////////// old example methods
 
   login(loginPayload): Observable<ApiResponse> {

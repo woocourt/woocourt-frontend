@@ -35,14 +35,14 @@ export class EditCriteriaComponent implements OnInit {
 
   onSubmit() {
     const payload = {
-      id: null,
+      id: this.criteriaType.id,
       name: this.addForm.value.name,
       required: this.addForm.value.required,
     }
     console.log('form value', payload)
-    this.apiService.addCriteriaType(payload)
+    this.apiService.updateCriteriaType(payload)
       .subscribe( _ => {
-        this.router.navigate(['list-criteria'])
+        this.router.navigate(['edit-criteria'])
       })
   }
 
