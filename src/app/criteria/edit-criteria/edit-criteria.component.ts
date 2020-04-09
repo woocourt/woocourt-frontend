@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core'
-import {FormBuilder, FormGroup, Validators} from '@angular/forms'
-import {Router} from '@angular/router'
-import {ApiService} from '../../service/api.service'
+import { Component, OnInit, NgZone, ChangeDetectorRef } from '@angular/core'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { Router } from '@angular/router'
+import { ApiService } from '../../service/api.service'
 import { CriteriaType } from 'src/app/model/criteriaType.model'
 import { CriteriaValue } from 'src/app/model/criteriaValue.model'
 
@@ -22,17 +22,7 @@ export class EditCriteriaComponent implements OnInit {
 
   ngOnInit() {
     this.criteriaType = new CriteriaType()
-    this.apiService.getCriteriaType(window.localStorage.getItem('criteriaTypeId'))
-    .subscribe( (data: CriteriaType) => {
-      this.criteriaType = data
-      console.log('criteria', this.criteriaType)
-    })
-
-    this.apiService.getCriteriaValues(window.localStorage.getItem('criteriaTypeId'))
-    .subscribe( (data: CriteriaValue[]) => {
-      this.criteriaValues = data
-      console.log('criteria values', this.criteriaValues)
-    })
+    this.update()
 
     this.addForm = this.formBuilder.group({
       id: [],
@@ -40,6 +30,14 @@ export class EditCriteriaComponent implements OnInit {
       required: [false],
     })
 
+  }
+
+  addValue() {
+    console.log(window.localStorage.getItem('criteriaTypeId'), this.newValue)
+    this.apiService.addCriteriaValue(window.localStorage.getItem('criteriaTypeId'), this.newValue)
+      .subscribe(_ => {
+        this.ngOnInit()
+      })
   }
 
   onSubmit() {
@@ -52,6 +50,20 @@ export class EditCriteriaComponent implements OnInit {
     this.apiService.updateCriteriaType(payload)
       .subscribe( _ => {
         this.router.navigate(['edit-criteria'])
+      })
+  }
+
+  update() {
+    this.apiService.getCriteriaType(window.localStorage.getItem('criteriaTypeId'))
+      .subscribe((data: CriteriaType) => {
+        this.criteriaType = data
+        console.log('criteria', this.criteriaType)
+      })
+
+    this.apiService.getCriteriaValues(window.localStorage.getItem('criteriaTypeId'))
+      .subscribe((data: CriteriaValue[]) => {
+        this.criteriaValues = data
+        console.log('criteria values', this.criteriaValues)
       })
   }
 

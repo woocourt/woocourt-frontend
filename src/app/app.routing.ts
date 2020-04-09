@@ -32,4 +32,4 @@ const routes: Routes = [
   // { path : 'add-character', component : AddCharacterComponent },
 ]
 
-export const routing = RouterModule.forRoot(routes)
+export const routing = RouterModule.forRoot(routes, {onSameUrlNavigation:  'reload'})
