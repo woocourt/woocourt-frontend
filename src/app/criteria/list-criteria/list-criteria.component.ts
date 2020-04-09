@@ -11,6 +11,7 @@ import { ApiService } from '../../service/api.service'
 export class ListCriteriaComponent implements OnInit {
 
   criteria: CriteriaType[]
+  newCriteria: CriteriaType = new CriteriaType()
 
   constructor(private router: Router, private apiService: ApiService) {
     this.criteria = []
@@ -25,10 +26,18 @@ export class ListCriteriaComponent implements OnInit {
 
   }
 
-  deleteCriteria(criteriaType: CriteriaType): void {
-    this.apiService.deleteCriteriaType(criteriaType.id)
+  deleteCriteria(id: string): void {
+    this.apiService.deleteCriteriaType(id)
       .subscribe( _ => {
-        this.criteria = this.criteria.filter(s => s !== criteriaType)
+        this.criteria = this.criteria.filter(s => s.id !== id)
+      })
+  }
+
+  addCriteria() {
+    this.apiService.addCriteriaType(this.newCriteria)
+      .subscribe( _ => {
+        this.newCriteria = new CriteriaType()
+        this.ngOnInit()
       })
   }
 
@@ -36,9 +45,9 @@ export class ListCriteriaComponent implements OnInit {
     this.router.navigate(['add-criteria'])
   }
 
-  editCriteriaType(criteriaType: CriteriaType): void {
+  editCriteriaType(id: string): void {
     window.localStorage.removeItem('criteriaTypeId')
-    window.localStorage.setItem('criteriaTypeId', criteriaType.id.toString())
+    window.localStorage.setItem('criteriaTypeId', id)
     this.router.navigate(['edit-criteria'])
   }
 

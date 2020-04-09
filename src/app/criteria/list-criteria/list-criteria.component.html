@@ -1,23 +1,35 @@
 <div class="col-md-6 character-container">
     <!-- <button class="btn btn-info" style="width:100px" (click)="goToStories()"> Stories</button> -->
         <h2 style="margin: auto">Criteria</h2>
-        <button class="btn btn-danger" style="width:100px" (click)="addCriteriaType()"> Add</button>
-        <table class="table table-striped">
-          <thead>
-          <tr>
-            <th class="hidden">Id</th>
-            <th>Name</th>
-            <th>Required</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let criteriaType of criteria">
-            <td class="hidden">{{criteriaType.id}}</td>
-            <td>{{criteriaType.name}}</td>
-            <td>{{criteriaType.required}}</td>
-            <td><button class="btn btn-success" (click)="deleteCriteria(criteriaType)"> Delete</button>
-              <button class="btn btn-success" (click)="editCriteriaType(criteriaType)" style="margin-left: 20px;"> Edit</button></td>
-          </tr>
-          </tbody>
-        </table>
+        <table class="minimalistBlack">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Required</th>
+                <th>actions</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <td>
+                  <input type="text" class="form-control" id="step" [(ngModel)]="newCriteria.name" />
+                </td>
+                <td>
+                  <input type="checkbox" class="form-control" id="value" [(ngModel)]="newCriteria.required" />
+                </td>
+                <td><button type="button" (click)="addCriteria()">Add</button></td>
+              </tr>
+            </tfoot>
+            <tbody>
+              <tr *ngFor="let item of criteria">
+                <td>{{ item.name }}</td>
+                <td>{{ item.required }}</td>
+                <td>
+                  <button type="button" (click)="deleteCriteria(item.id)">Delete</button>
+                  <button type="button" (click)="editCriteriaType(item.id)">Edit</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
       </div>
