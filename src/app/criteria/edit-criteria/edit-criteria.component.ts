@@ -1,5 +1,4 @@
-import { Component, OnInit, NgZone, ChangeDetectorRef } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { ApiService } from '../../service/api.service'
 import { CriteriaType } from 'src/app/model/criteriaType.model'
@@ -16,20 +15,15 @@ export class EditCriteriaComponent implements OnInit {
   criteriaValues: CriteriaValue[]
   newValue: CriteriaValue = new CriteriaValue()
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private apiService: ApiService) { }
-
-  addForm: FormGroup
+  constructor(private router: Router, private apiService: ApiService) { }
 
   ngOnInit() {
-    this.criteriaType = new CriteriaType()
+    this.apiService.getCriteriaType(window.localStorage.getItem('criteriaTypeId'))
+      .subscribe(data => {
+        console.log('type', data)
+        this.criteriaType = data
+      })
     this.update()
-
-    this.addForm = this.formBuilder.group({
-      id: [],
-      name: ['', Validators.required],
-      required: [false],
-    })
-
   }
 
   addValue() {
@@ -47,16 +41,10 @@ export class EditCriteriaComponent implements OnInit {
       })
   }
 
-  onSubmit() {
-    const payload = {
-      id: this.criteriaType.id,
-      name: this.addForm.value.name,
-      required: this.addForm.value.required,
-    }
-    console.log('form value', payload)
-    this.apiService.updateCriteriaType(payload)
+  updateCriteria() {
+    this.apiService.updateCriteriaType(this.criteriaType)
       .subscribe(_ => {
-        this.router.navigate(['edit-criteria'])
+        this.ngOnInit()
       })
   }
 

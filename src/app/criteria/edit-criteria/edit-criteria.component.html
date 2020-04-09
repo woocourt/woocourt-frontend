@@ -1,18 +1,16 @@
 <div class="col-md-6 user-container">
   <h2 class="text-center">Edit Criteria Type</h2>
-  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="name">Name:</label>
-      <input type="text" formControlName="name" placeholder="name" name="title" class="form-control" id="name"
-        [value]="criteriaType.name">
-    </div>
-    <div class="form-group">
-      <label for="required">Required:</label>
-      <input type="checkbox" formControlName="required" name="required" class="form-control" id="required"
-        [checked]="criteriaType.required">
-    </div>
-    <button class="btn btn-success">Save</button>
-  </form>
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" placeholder="name" name="title" class="form-control" id="name"
+      [(ngModel)]="criteriaType.name">
+  </div>
+  <div class="form-group">
+    <label for="required">Required:</label>
+    <input type="checkbox" name="required" class="form-control" id="required"
+    [(ngModel)]="criteriaType.required">
+  </div>
+  <button class="btn btn-success" (click)="updateCriteria()">Save</button>
   <div>
     <h3>possible values</h3>
     <table class="minimalistBlack">
