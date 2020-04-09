@@ -33,8 +33,15 @@ export class EditCriteriaComponent implements OnInit {
   }
 
   addValue() {
-    console.log(window.localStorage.getItem('criteriaTypeId'), this.newValue)
     this.apiService.addCriteriaValue(window.localStorage.getItem('criteriaTypeId'), this.newValue)
+      .subscribe(_ => {
+        this.newValue = new CriteriaValue()
+        this.ngOnInit()
+      })
+  }
+
+  deleteValue(valueId: string) {
+    this.apiService.deleteCriteriaValue(valueId)
       .subscribe(_ => {
         this.ngOnInit()
       })
@@ -48,7 +55,7 @@ export class EditCriteriaComponent implements OnInit {
     }
     console.log('form value', payload)
     this.apiService.updateCriteriaType(payload)
-      .subscribe( _ => {
+      .subscribe(_ => {
         this.router.navigate(['edit-criteria'])
       })
   }

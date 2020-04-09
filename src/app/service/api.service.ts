@@ -39,6 +39,10 @@ export class ApiService {
     return this.http.post<ApiResponse>(`${this.baseUrl}/criteria/${criteriaId}/value`, criteriaValue)
   }
 
+  deleteCriteriaValue(valueId: string) {
+    return this.http.delete<ApiResponse>(`${this.baseUrl}/criteria/value/${valueId}`)
+  }
+
   updateCriteriaType(criteriaType: CriteriaType): Observable<ApiResponse> {
     return this.http.put<ApiResponse>(`${this.baseUrl}/criteria/${criteriaType.id}`, criteriaType)
   }

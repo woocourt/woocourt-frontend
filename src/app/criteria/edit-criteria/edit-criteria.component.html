@@ -39,8 +39,7 @@
           <td>{{ item.value }}</td>
           <td>{{ item.value_display }}</td>
           <td>
-            <button type="button">Edit</button>
-            <button type="button">Delete</button>
+            <button type="button" (click)="deleteValue(item.id)">Delete</button>
           </td>
         </tr>
       </tbody>
