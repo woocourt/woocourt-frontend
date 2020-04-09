@@ -62,4 +62,8 @@ export class EditCriteriaComponent implements OnInit {
       })
   }
 
+  navigateBack() {
+    this.router.navigate(['list-criteria'])
+  }
+
 }
