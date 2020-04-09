@@ -1,14 +1,49 @@
 <div class="col-md-6 user-container">
-        <h2 class="text-center">Edit Criteria Type</h2>
-        <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" formControlName="name" placeholder="name" name="title" class="form-control" id="name" [value]="criteriaType.name">
-          </div>
-          <div class="form-group">
-            <label for="required">Required:</label>
-            <input type="checkbox" formControlName="required" name="required" class="form-control" id="required" [checked]="criteriaType.required">
-          </div>
-          <button class="btn btn-success">Save</button>
-        </form>
-      </div>
+  <h2 class="text-center">Edit Criteria Type</h2>
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" formControlName="name" placeholder="name" name="title" class="form-control" id="name"
+        [value]="criteriaType.name">
+    </div>
+    <div class="form-group">
+      <label for="required">Required:</label>
+      <input type="checkbox" formControlName="required" name="required" class="form-control" id="required"
+        [checked]="criteriaType.required">
+    </div>
+    <button class="btn btn-success">Save</button>
+  </form>
+  <div>
+    <h3>possible values</h3>
+    <table class="minimalistBlack">
+      <thead>
+        <tr>
+          <th>step</th>
+          <th>value</th>
+          <th>actions</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <td>
+            <input type="number" class="form-control" id="step" [(ngModel)]="newValue.value" />
+          </td>
+          <td>
+            <input type="text" class="form-control" id="value" [(ngModel)]="newValue.value_display" />
+          </td>
+          <td><button type="button">Add</button></td>
+        </tr>
+      </tfoot>
+      <tbody>
+        <tr *ngFor="let item of criteriaValues">
+          <td>{{ item.value }}</td>
+          <td>{{ item.value_display }}</td>
+          <td>
+            <button type="button">Edit</button>
+            <button type="button">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

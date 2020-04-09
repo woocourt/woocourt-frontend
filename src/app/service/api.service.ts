@@ -7,6 +7,7 @@ import {Observable} from 'rxjs/index'
 import {ApiResponse} from '../model/api.response'
 import { CriteriaType } from '../model/criteriaType.model'
 import { environment } from '../../environments/environment'
+import { CriteriaValue } from '../model/criteriaValue.model'
 
 @Injectable()
 export class ApiService {
@@ -20,6 +21,10 @@ export class ApiService {
 
   getCriteriaType(id: string): Observable<CriteriaType> {
     return this.http.get<any>(`${this.baseUrl}/criteria/${id}`)
+  }
+
+  getCriteriaValues(id: string): Observable<CriteriaValue[]> {
+    return this.http.get<any>(`${this.baseUrl}/criteria/${id}/values`)
   }
 
   deleteCriteriaType(id: string): Observable<ApiResponse> {

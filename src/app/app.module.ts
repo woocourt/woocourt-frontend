@@ -20,6 +20,7 @@ import { ListCharacterComponent } from './character/list-character/list-characte
 
 import {ListCriteriaComponent} from './criteria/list-criteria/list-criteria.component'
 import { EditCriteriaComponent } from './criteria/edit-criteria/edit-criteria.component'
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { EditCriteriaComponent } from './criteria/edit-criteria/edit-criteria.co
     routing,
     ReactiveFormsModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [ApiService, {provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,

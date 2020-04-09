@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {Router} from '@angular/router'
 import {ApiService} from '../../service/api.service'
 import { CriteriaType } from 'src/app/model/criteriaType.model'
+import { CriteriaValue } from 'src/app/model/criteriaValue.model'
 
 @Component({
   selector: 'app-edit-criteria',
@@ -12,6 +13,8 @@ import { CriteriaType } from 'src/app/model/criteriaType.model'
 export class EditCriteriaComponent implements OnInit {
 
   criteriaType: CriteriaType
+  criteriaValues: CriteriaValue[]
+  newValue: CriteriaValue = new CriteriaValue()
 
   constructor(private formBuilder: FormBuilder, private router: Router, private apiService: ApiService) { }
 
@@ -23,6 +26,12 @@ export class EditCriteriaComponent implements OnInit {
     .subscribe( (data: CriteriaType) => {
       this.criteriaType = data
       console.log('criteria', this.criteriaType)
+    })
+
+    this.apiService.getCriteriaValues(window.localStorage.getItem('criteriaTypeId'))
+    .subscribe( (data: CriteriaValue[]) => {
+      this.criteriaValues = data
+      console.log('criteria values', this.criteriaValues)
     })
 
     this.addForm = this.formBuilder.group({
