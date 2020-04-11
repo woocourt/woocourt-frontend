@@ -24,11 +24,11 @@ export class ApiService {
   }
 
   getCriteriaValues(id: string): Observable<CriteriaValue[]> {
-    return this.http.get<any>(`${this.baseUrl}/criteria/${id}/values`)
+    return this.http.get<any>(`${this.baseUrl}/criteria/values/${id}`)
   }
 
   deleteCriteriaType(id: string): Observable<ApiResponse> {
-    return this.http.delete<ApiResponse>(`${this.baseUrl}/criteria/${id}`)
+    return this.http.delete<ApiResponse>(`${this.baseUrl}/criteria/delete/${id}`)
   }
 
   addCriteriaType(criteriaType: CriteriaType): Observable<ApiResponse> {
@@ -36,15 +36,15 @@ export class ApiService {
   }
 
   addCriteriaValue(criteriaId: string, criteriaValue: CriteriaValue) {
-    return this.http.post<ApiResponse>(`${this.baseUrl}/criteria/${criteriaId}/value`, criteriaValue)
+    return this.http.post<ApiResponse>(`${this.baseUrl}/criteria/value/${criteriaId}`, criteriaValue)
   }
 
   deleteCriteriaValue(valueId: string) {
-    return this.http.delete<ApiResponse>(`${this.baseUrl}/criteria/value/${valueId}`)
+    return this.http.delete<ApiResponse>(`${this.baseUrl}/criteria/value/delete/${valueId}`)
   }
 
   updateCriteriaType(criteriaType: CriteriaType): Observable<ApiResponse> {
-    return this.http.put<ApiResponse>(`${this.baseUrl}/criteria/${criteriaType.id}`, criteriaType)
+    return this.http.put<ApiResponse>(`${this.baseUrl}/criteria/update/${criteriaType.id}`, criteriaType)
   }
 
   ///////////////////////// old example methods
